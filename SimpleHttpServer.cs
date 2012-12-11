@@ -282,38 +282,6 @@ namespace Bend.Util {
     }
 
 
-    public class TestMain {
-        
-        public static int xMain(String[] args) {
-            HttpServer httpServer;
-            // USBScale.Scale scale;
-            // scale = new USBScale.Scale;
-
-           // double v;
-          
-            //ZWeighBtn.ScaleBtn zb;
-            //zb = new ZWeighBtn.ScaleBtn
-
-            // zb.VID = 0x1446;
-            // zb.VID ="0x1446";
-            //v = zb.SWeight;
-            //Console.WriteLine("weight: " + v.ToString());
-
-
-            if (args.GetLength(0) > 0) {
-                httpServer = new MyHttpServer(Convert.ToInt16(args[0]));
-            } else {
-                httpServer = new MyHttpServer(8080);
-            }
-            Thread thread = new Thread(new ThreadStart(httpServer.listen));
-            thread.Start();
-
-            Console.WriteLine("http server running");
-            return 0;
-        }
-
-    }
-
 }
 
 

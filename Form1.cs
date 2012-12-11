@@ -6,6 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System;
+using System.Collections;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+using USBScale;
+using ZWeighBtn;
+
 
 namespace ConsoleApplication1
 {
@@ -36,6 +45,29 @@ namespace MyTrayApp
         [STAThread]
         public static void Main()
         {
+
+            Bend.Util.HttpServer httpServer;
+            // USBScale.Scale scale;
+            // scale = new USBScale.Scale;
+
+            // double v;
+
+            //ZWeighBtn.ScaleBtn zb;
+            //zb = new ZWeighBtn.ScaleBtn
+
+            // zb.VID = 0x1446;
+            // zb.VID ="0x1446";
+            //v = zb.SWeight;
+            //Console.WriteLine("weight: " + v.ToString());
+
+
+            httpServer = new Bend.Util.MyHttpServer(8080);
+            // httpServer = new MyHttpServer(Convert.ToInt16(args[0]));
+            Thread thread = new Thread(new ThreadStart(httpServer.listen));
+            thread.Start();
+
+            Console.WriteLine("http server running");
+
             Application.Run(new SysTrayApp());
         }
 
